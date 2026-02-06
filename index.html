@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Video & Audio Editing Guide | Home</title>
+  <meta name="description" content="An informational guide to AI-assisted video and audio editing workflows: text-based editing, captions, clips, and screen recording." />
+  <meta name="robots" content="index, follow" />
+
+  <style>
+    :root{
+      --bg1:#0b1020; --bg2:#050816;
+      --card:rgba(255,255,255,0.06);
+      --card2:rgba(255,255,255,0.04);
+      --stroke:rgba(255,255,255,0.12);
+      --text:#ffffff;
+      --muted:#cbd5e1;
+      --muted2:#94a3b8;
+      --brand1:#22c55e;
+      --brand2:#60a5fa;
+      --brand3:#a78bfa;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+      background:radial-gradient(1200px 600px at 20% 10%, rgba(96,165,250,0.18), transparent 60%),
+                 radial-gradient(900px 600px at 80% 20%, rgba(167,139,250,0.18), transparent 60%),
+                 linear-gradient(120deg,var(--bg1),var(--bg2));
+      color:var(--text);
+      line-height:1.55;
+      overflow-x:hidden;
+    }
+
+    /* ===== COOKIE SCROLL LOCK ===== */
+    body.cookie-locked{
+      overflow:hidden !important;
+      height:100vh;
+      touch-action:none;
+    }
+
+    header{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter: blur(10px);
+      background:rgba(5,8,22,0.55);
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+    .nav{max-width:1180px;margin:auto;padding:16px 22px;display:flex;justify-content:space-between;align-items:center;gap:14px}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.2px}
+    .dot{width:12px;height:12px;border-radius:999px;background:linear-gradient(135deg,var(--brand2),var(--brand3));box-shadow:0 0 0 6px rgba(96,165,250,0.10)}
+    nav a{color:#e5e7eb;text-decoration:none;margin-left:16px;font-weight:800;font-size:14px;opacity:.9}
+    nav a:hover{opacity:1}
+
+    .wrap{max-width:1180px;margin:auto;padding:34px 22px}
+
+    .hero{
+      display:grid;grid-template-columns:1fr;gap:22px;
+      padding:44px 22px;border-radius:26px;
+      background:linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      border:1px solid rgba(255,255,255,0.10);
+      box-shadow:0 30px 70px rgba(0,0,0,.35);
+      position:relative;overflow:hidden;
+    }
+    .hero:before{
+      content:"";position:absolute;inset:-2px;
+      background:radial-gradient(600px 280px at 20% 10%, rgba(34,197,94,0.18), transparent 60%),
+                 radial-gradient(560px 260px at 75% 20%, rgba(96,165,250,0.18), transparent 60%);
+      pointer-events:none;
+    }
+    .hero > *{position:relative;z-index:2}
+
+    .badge{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:999px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.05);color:#e5e7eb;font-weight:900;font-size:13px;width:max-content}
+    .spark{width:10px;height:10px;border-radius:999px;background:linear-gradient(135deg,var(--brand1),#86efac)}
+
+    h1{font-size:44px;line-height:1.05;letter-spacing:-0.6px;margin-top:14px}
+    .sub{margin-top:14px;color:var(--muted);font-size:16px;max-width:64ch}
+
+    .ctaRow{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 18px;border-radius:999px;text-decoration:none;font-weight:900;border:1px solid rgba(255,255,255,0.12);transition:transform .15s ease, opacity .15s ease;cursor:pointer}
+    .btn:hover{transform:translateY(-1px)}
+    .btnPrimary{background:linear-gradient(135deg,var(--brand2),var(--brand3));color:#050816;border:none}
+    .btnGhost{background:rgba(255,255,255,0.05);color:#fff}
+
+    .mini{display:grid;grid-template-columns:1fr;gap:12px;margin-top:26px}
+    .pill{padding:14px 16px;border-radius:18px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);color:#e5e7eb;font-weight:800;font-size:14px}
+
+    section{margin-top:36px}
+    .sectionTitle{font-size:22px;letter-spacing:-0.2px;margin-bottom:14px}
+    .sectionSub{color:var(--muted);margin-bottom:18px}
+
+    .grid{display:grid;grid-template-columns:1fr;gap:14px}
+    .card{background:var(--card);border:1px solid rgba(255,255,255,0.10);border-radius:22px;padding:20px;box-shadow:0 20px 50px rgba(0,0,0,.25)}
+    .card h3{font-size:16px;margin-bottom:8px}
+    .card p{color:var(--muted);font-size:14px}
+
+    .kpi{display:flex;align-items:flex-start;gap:12px;margin-top:12px;color:#e5e7eb;font-weight:800;font-size:14px}
+    .kpi span{width:26px;height:26px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.10)}
+
+    footer{margin-top:44px;padding:28px 22px;color:var(--muted2);font-size:12px;border-top:1px solid rgba(255,255,255,0.08);background:rgba(2,6,23,0.55);backdrop-filter: blur(10px)}
+    footer a{color:#c7d2fe;text-decoration:none}
+    footer a:hover{text-decoration:underline}
+
+    /* =========================
+       COOKIE OVERLAY + STRIP
+       ========================= */
+
+    /* Overlay behind cookie (dim + blur-ish) */
+    .cookie-overlay{
+      position:fixed; inset:0; z-index:9998;
+          background: rgb(0 0 0 / 0%);
+    backdrop-filter: blur(4px);
+      display:none;
+    }
+
+    .cookie-strip{
+      position:fixed;left:0;right:0;bottom:0;z-index:9999;
+      padding:16px 16px;
+      display:none;
+    }
+
+    .cookie-inner{
+      max-width:1180px;margin:auto;
+      display:flex;flex-direction:column;gap:12px;
+      border:1px solid rgba(255,255,255,0.20);
+      background:linear-gradient(135deg,var(--brand2),var(--brand3)); /* <-- requested */
+      border-radius:18px;
+      padding:14px 14px;
+      box-shadow:0 -20px 60px rgba(0,0,0,.40);
+    }
+
+    .cookie-top{
+      display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    }
+
+    .cookie-text{
+      color:#050816; /* readable on gradient */
+      font-size:13px;line-height:1.45;max-width:90ch;
+      font-weight:800;
+    }
+    .cookie-text b{color:#050816}
+
+    .cookie-actions{display:flex;gap:10px;flex-wrap:wrap}
+
+    .cookie-actions .btn{
+      padding:12px 14px;
+      font-size:13px;
+      border:1px solid rgba(5,8,22,0.20);
+    }
+
+    /* Buttons for cookie area */
+    .btnCookiePrimary{
+      background:rgba(5,8,22,0.92);
+      color:#fff;
+      border:none;
+    }
+    .btnCookieGhost{
+      background:rgba(255,255,255,0.22);
+      color:#050816;
+    }
+
+    .cookie-link{
+      color:rgba(5,8,22,0.92);
+      text-decoration:underline;
+      font-weight:900;
+    }
+
+    /* Customize modal */
+    .cookie-modal{
+      position:fixed; inset:0; z-index:10000;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+    }
+    .cookie-modal .panel{
+      width:min(720px, 100%);
+      border-radius:20px;
+      border:1px solid rgba(255,255,255,0.14);
+      background:rgba(2,6,23,0.92);
+      box-shadow:0 30px 80px rgba(0,0,0,.55);
+      padding:18px;
+      color:#fff;
+    }
+    .cookie-modal h3{font-size:16px;margin-bottom:8px}
+    .cookie-modal p{color:var(--muted);font-size:13px}
+    .cookie-options{margin-top:14px;display:grid;gap:10px}
+    .opt{
+      display:flex;align-items:flex-start;gap:10px;
+      padding:12px;border-radius:14px;
+      background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.10);
+    }
+    .opt b{display:block;font-size:13px}
+    .opt small{color:var(--muted2);display:block;margin-top:2px}
+
+    .modal-actions{
+      display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end;
+      margin-top:14px;
+    }
+
+    @media(min-width:860px){
+      h1{font-size:56px}
+      .hero{grid-template-columns:1.2fr .8fr;align-items:center;padding:56px 44px}
+      .mini{grid-template-columns:repeat(3,1fr)}
+      .grid{grid-template-columns:repeat(3,1fr)}
+      .cookie-inner{flex-direction:row;align-items:center;justify-content:space-between}
+      .cookie-top{flex:1}
+      .cookie-actions{justify-content:flex-end}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <div class="logo"><span class="dot"></span> AI Editing Guide</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="features.html">Features</a>
+      <a href="compare.html">Compare</a>
+      <a href="about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <div>
+      <div class="badge"><span class="spark"></span> Informational pre-lander</div>
+      <h1>Edit video & audio like a document.</h1>
+      <p class="sub">A creator-friendly guide to text-based editing, captions, screen recording, and faster publishing workflows.</p>
+
+      <div class="ctaRow">
+        <a class="btn btnPrimary" href="https://www.descript.com/" target="_blank" rel="nofollow noopener">Visit Official Descript</a>
+        <a class="btn btnGhost" href="features.html">Explore Features</a>
+      </div>
+
+      <div class="mini">
+        <div class="pill">Text-based editing workflow</div>
+        <div class="pill">Captions, clips & templates</div>
+        <div class="pill">Screen + webcam recording</div>
+      </div>
+    </div>
+
+    <div class="card" style="background:rgba(255,255,255,0.04)">
+      <h3>Best for creators who publish</h3>
+      <p>Creators, marketers, and teams use AI editing tools to produce content consistently without complex editing workflows.</p>
+      <div class="kpi"><span>✓</span> Podcasts, YouTube, short clips</div>
+      <div class="kpi"><span>✓</span> Marketing, ads & product demos</div>
+      <div class="kpi"><span>✓</span> Tutorials, training & internal docs</div>
+      <div class="kpi"><span>✓</span> Faster review & collaboration</div>
+    </div>
+  </div>
+
+  <section>
+    <h2 class="sectionTitle">What you’ll learn</h2>
+    <p class="sectionSub">A quick overview before you explore the deeper pages.</p>
+
+    <div class="grid">
+      <div class="card"><h3>How text-based editing works</h3><p>Edit audio/video by editing the transcript. Great for removing filler words and tightening scripts.</p></div>
+      <div class="card"><h3>How creators make clips</h3><p>Turn long content into short videos for social platforms and paid ads.</p></div>
+      <div class="card"><h3>How teams collaborate</h3><p>Review, comment, and approve edits in one workflow to reduce back-and-forth.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="card" style="text-align:center">
+      <h2 class="sectionTitle" style="margin-bottom:8px">Want the full feature breakdown?</h2>
+      <p class="sectionSub">Next page covers the most requested creator features.</p>
+      <a class="btn btnPrimary" href="features.html">Go to Features →</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div style="max-width:1180px;margin:auto">
+    <p><strong>Disclosure:</strong> This website contains affiliate links, which means we may receive a commission if you click a link and purchase something that we have recommended. While clicking these links won't cost you any extra money, it helps us keep this site up and running. We only promote products or services we genuinely believe will add value to our readers.</p>
+    <p>As an Associate and affiliate for other programs, we earn from qualifying purchases. All affiliate relationships are disclosed in accordance with the Federal Trade Commission’s 16 CFR, Part 255: “Guides Concerning the Use of Endorsements and Testimonials in Advertising.”</p>
+    <p style="margin-top:8px">
+      <a href="privacy.html">Privacy</a> ·
+      <a href="terms.html">Terms</a>
+    </p>
+  </div>
+</footer>
+
+<!-- COOKIE OVERLAY -->
+<div class="cookie-overlay" id="cookieOverlay" aria-hidden="true"></div>
+
+<!-- COOKIE STRIP -->
+<div class="cookie-strip" id="cookieStrip" role="dialog" aria-live="polite" aria-label="Cookie consent">
+  <div class="cookie-inner">
+    <div class="cookie-top">
+      <div class="cookie-text">
+        <b>Cookies notice:</b> We use essential cookies to make this site work. You can accept, reject non-essential cookies, or customize preferences.
+        Read our <a class="cookie-link" href="privacy.html">Privacy Policy</a> and <a class="cookie-link" href="terms.html">Terms</a>.
+      </div>
+    </div>
+
+    <div class="cookie-actions">
+      <button class="btn btnCookieGhost" id="cookieReject" type="button">Reject</button>
+      <button class="btn btnCookieGhost" id="cookieCustomize" type="button">Customize</button>
+      <button class="btn btnCookiePrimary" id="cookieAccept" type="button">Accept</button>
+    </div>
+  </div>
+</div>
+
+<!-- CUSTOMIZE MODAL -->
+<div class="cookie-modal" id="cookieModal" role="dialog" aria-modal="true" aria-label="Cookie preferences">
+  <div class="panel">
+    <h3>Cookie preferences</h3>
+    <p>Essential cookies are always on. Choose whether to allow analytics cookies (if enabled later).</p>
+
+    <div class="cookie-options">
+      <div class="opt">
+        <input type="checkbox" checked disabled />
+        <div>
+          <b>Essential</b>
+          <small>Needed for basic site functionality and your consent choice.</small>
+        </div>
+      </div>
+
+      <div class="opt">
+        <input type="checkbox" id="optAnalytics" />
+        <div>
+          <b>Analytics</b>
+          <small>Helps us understand performance. (Optional)</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn btnGhost" id="prefClose" type="button">Close</button>
+      <button class="btn btnPrimary" id="prefSave" type="button">Save preferences</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    const KEY = "cookie_consent_v2"; // bumped version
+    const strip = document.getElementById("cookieStrip");
+    const overlay = document.getElementById("cookieOverlay");
+
+    const acceptBtn = document.getElementById("cookieAccept");
+    const rejectBtn = document.getElementById("cookieReject");
+    const customizeBtn = document.getElementById("cookieCustomize");
+
+    const modal = document.getElementById("cookieModal");
+    const optAnalytics = document.getElementById("optAnalytics");
+    const prefSave = document.getElementById("prefSave");
+    const prefClose = document.getElementById("prefClose");
+
+    const lockScroll = () => document.body.classList.add("cookie-locked");
+    const unlockScroll = () => document.body.classList.remove("cookie-locked");
+
+    const readState = () => {
+      try {
+        const raw = localStorage.getItem(KEY);
+        return raw ? JSON.parse(raw) : null;
+      } catch (e) { return null; }
+    };
+
+    const writeState = (obj) => {
+      try { localStorage.setItem(KEY, JSON.stringify(obj)); } catch (e) {}
+    };
+
+    const show = () => {
+      overlay.style.display = "block";
+      strip.style.display = "block";
+      lockScroll();
+      overlay.setAttribute("aria-hidden", "false");
+    };
+
+    const closeAll = () => {
+      strip.style.display = "none";
+      overlay.style.display = "none";
+      modal.style.display = "none";
+      unlockScroll();
+      overlay.setAttribute("aria-hidden", "true");
+    };
+
+    const openModal = () => {
+      modal.style.display = "flex";
+    };
+
+    // If no saved consent => show
+    const st = readState();
+    if (!st || !st.choice) show();
+
+    // Accept
+    acceptBtn.addEventListener("click", function () {
+      writeState({ choice: "accepted", analytics: true, ts: Date.now() });
+      closeAll();
+    });
+
+    // Reject (non-essential off)
+    rejectBtn.addEventListener("click", function () {
+      writeState({ choice: "rejected", analytics: false, ts: Date.now() });
+      closeAll();
+    });
+
+    // Customize
+    customizeBtn.addEventListener("click", function () {
+      const cur = readState();
+      optAnalytics.checked = !!(cur && cur.analytics);
+      openModal();
+    });
+
+    // Save preferences
+    prefSave.addEventListener("click", function () {
+      writeState({ choice: "custom", analytics: !!optAnalytics.checked, ts: Date.now() });
+      closeAll();
+    });
+
+    // Close modal only (keep banner visible)
+    prefClose.addEventListener("click", function () {
+      modal.style.display = "none";
+    });
+
+    // Clicking overlay does nothing (forces explicit choice)
+    overlay.addEventListener("click", function (e) {
+      e.preventDefault();
+    });
+
+    // ESC closes only modal (not banner)
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && modal.style.display === "flex") {
+        modal.style.display = "none";
+      }
+    });
+  })();
+</script>
+</body>
+</html>
